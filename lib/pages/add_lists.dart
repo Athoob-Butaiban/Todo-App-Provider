@@ -13,16 +13,17 @@ class AddTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Add Task")),
+      appBar: AppBar(centerTitle: true, title: Text("Add Task")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(controller: controller),
           ElevatedButton(
-            onPressed: () {
-              context.read<Task>().addTask(
-                  controller.text); // this line for the function in the tasks
-              context.pop;
+            onPressed: () // keep it empty
+                {
+              context.read<Task>().addTask(controller
+                  .text); // getting acces to the Task class (provider). this syntax is user in case of multiple obj that are beeing used
+              context.pop; // this is for the router (navigation)
             },
             child: Text("ADD"),
           )
