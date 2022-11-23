@@ -32,11 +32,17 @@ class ListPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Checkbox(
-                          value: context
-                              .watch<Task>()
-                              .listOfTasks[index]
-                              .isComplete, // so it can the value from the obj as changes accoding to it
-                          onChanged: (value) {}),
+                        value: context
+                            .watch<Task>()
+                            .listOfTasks[index]
+                            .isComplete, // so it can the value from the obj as changes accoding to it
+                        onChanged: (value) {
+                          context.read<Task>().changeingTaskStatus(
+                                context.read<Task>().listOfTasks[
+                                    index], // it is going to be passed by the obj not the index, the is another way to pass it by index. no side effect of this choice
+                              ); // don't make a read then watch, it is not good on the long run
+                        },
+                      ),
                       Expanded(
                         child: Text(
                           context

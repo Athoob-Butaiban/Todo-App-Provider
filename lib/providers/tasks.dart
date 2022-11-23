@@ -35,6 +35,13 @@ class Task extends ChangeNotifier {
   //make new function for the new order for the check box
   void changeingTaskStatus(TaskModel task) {
     task.isComplete = !task
-        .isComplete; // to flip the status, other way of doing it is by if statement, no need for it just know this one line is for flipping
+        .isComplete; // to flip a bool (the status), other way of doing it is by if statement, no need for it just know this one line is for flipping
+    notifyListeners();
+  }
+
+  void taskStatusIndex(int index) {
+    var tasks; // tasks was giving an error the quick fix is to define it as local
+    tasks[index].isComplete = !tasks[index].isComplete;
+    notifyListeners();
   }
 }
