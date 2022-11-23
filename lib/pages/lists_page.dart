@@ -53,7 +53,12 @@ class ListPage extends StatelessWidget {
                       ),
                       // Spacer(), can be replaced with expanded. Both do the same thing
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            var taskProvider =
+                                context.read<Task>(); // making a method
+                            taskProvider.deleteAtask(index);
+                            // based on the func deleteAtask (error)
+                          },
                           icon: Icon(Icons.delete)), // delte icon
                     ],
                   ),

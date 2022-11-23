@@ -40,8 +40,14 @@ class Task extends ChangeNotifier {
   }
 
   void taskStatusIndex(int index) {
-    var tasks; // tasks was giving an error the quick fix is to define it as local
-    tasks[index].isComplete = !tasks[index].isComplete;
+    var task; // tasks was giving an error the quick fix is to define it as local
+    task[index].isComplete = !task[index].isComplete;
     notifyListeners();
   }
+
+  void deleteAtask(int index) {
+    var task;
+    task.removeAt(index);
+    notifyListeners();
+  } //error for the task, solution define local vas
 }
